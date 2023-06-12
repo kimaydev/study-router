@@ -6,7 +6,9 @@ import About from "./pages/About";
 import Members from "./pages/Members";
 import SongList from "./pages/SongList";
 import { useState } from "react";
-import SongDetail from "./pages/SongDetail";
+// import SongDetail from "./pages/SongDetail";
+import Player from "./pages/Player";
+import PlayerIndex from "./pages/PlayerIndex";
 
 function App() {
   /*
@@ -90,9 +92,13 @@ function App() {
           {/* <Route path="" element={<컴포넌트 속성명="값"/>} /> */}
           <Route path="/about" element={<About title="인디밴드" />} />
           <Route path="/members" element={<Members members={members} />} />
-          <Route path="/songs" element={<SongList songs={songs} />} />
-          {/* 웹브라우저 주소: /songs/1 URL Parameter 리턴 */}
-          <Route path="/songs/:id" element={<SongDetail songs={songs} />} />
+          <Route path="/songs" element={<SongList songs={songs} />}>
+            {/* 중첩된 route index props */}
+            <Route index element={<PlayerIndex />} />
+            {/* 웹브라우저 주소: /songs/1 URL Parameter 리턴 */}
+            {/* <Route path=":id" element={<SongDetail songs={songs} />} /> */}
+            <Route path=":id" element={<Player songs={songs} />} />
+          </Route>
         </Routes>
       </div>
     </>

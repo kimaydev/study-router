@@ -1,4 +1,6 @@
 @charset "utf-8";
+/* font awesome 설치 */
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 * {
   margin: 0;
   padding: 0;
@@ -25,4 +27,17 @@ body {
   line-height: 1.6;
   letter-spacing: -0.3px;
   color: #000;
+}
+
+/* modal 스타일 */
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal .modal-dialog {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  margin: 0;
 }
