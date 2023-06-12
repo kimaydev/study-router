@@ -22,8 +22,9 @@ const SongList = ({ songs }) => {
     <div className="card card-body">
       <h2>SongList</h2>
       <ul className="list-group">{list}</ul>
-      {/* 중첩된 Route 표현 */}
-      <Outlet />
+      {/* 중첩된 Route 표현 : context 활용 */}
+      {/* 중첩된 Route에서는 Outlet에 props를 전달함으로서 중복된 props 사용을 방지할 수 있다. */}
+      <Outlet context={{ songs }} />
     </div>
   );
 };

@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useOutletContext,
+  useParams,
+} from "react-router-dom";
 import Youtube from "react-youtube";
 
-const Player = ({ songs }) => {
+const Player = () => {
+  // Outlet의 Context를 props로 사용한다.
+  const { songs } = useOutletContext();
   const navigate = useNavigate();
   const { id } = useParams();
   const [title, setTitle] = useState();
@@ -28,7 +35,7 @@ const Player = ({ songs }) => {
             <Link to="/songs" type="button" className="btn-close" />
           </div>
           <div className="modal-body py-0 pb-3">
-            {/* 유튜브 영상 자리 */}
+            {/* React-youtube 라이브러리 활용 */}
             <Youtube
               videoId={youtubeLink}
               opts={{ width: "100%", playerVars: { autoplay: 1, mute: 1 } }}

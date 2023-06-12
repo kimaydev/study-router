@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 /*
 	리액트 컴포넌트에서 이미지 소스 불러오는 방법
@@ -12,6 +13,23 @@ import React from "react";
 */
 
 const Members = ({ members }) => {
+  // URI 경로를 이동할 수 있는 Hook
+  const navigate = useNavigate();
+  // 사용법 : navigate(경로, 옵션)
+  const goHome = () => {
+    // parameter, 쿼리스트링 말고 navigate를 이용해서 정보를 전달하고자 함
+    // state 옵션에 여러 값을 전달하고 싶다면 객체를 정의해서 전달해준다.
+    // navigate("/", { state: { from: "/members", age: 30 } });
+    navigate("/");
+  };
+
+  /*
+	location의 state 활용하기
+	const showInfo = (_who, _img) => {
+    navigate("/about", { state: { singer: _who, photo: _img } });
+  };
+	*/
+
   const path = process.env.PUBLIC_URL;
   const imgStyle = {
     width: 90,
@@ -26,6 +44,8 @@ const Members = ({ members }) => {
           alt={item.name}
           className="img-thumbnail"
           style={imgStyle}
+          // onClick={() => showInfo(item.name, item.photo)}
+          // 매개변수에 무언가를 전달할때는 반드시 화살표 함수로 감싸야 한다.
         />
         <br />
         <h6>{item.name}</h6>
@@ -43,6 +63,10 @@ const Members = ({ members }) => {
       <div className="container">
         <div className="row">{list}</div>
       </div>
+
+      <button className="btn btn-secondary" onClick={goHome}>
+        Home
+      </button>
     </div>
   );
 };
