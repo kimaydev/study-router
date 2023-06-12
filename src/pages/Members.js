@@ -19,6 +19,7 @@ const Members = ({ members }) => {
   };
   const list = members.map((item, index) => {
     return (
+      // JSX에서는 반복문 사용 시 key(unique id) 있어야 한다.
       <div key={index} className="col-6 col-md-4 col-lg-3">
         <img
           src={`${path}/${item.photo}`}
